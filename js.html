@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="application/javascript">
+//        function fun1() {
+//            var a=b=3; //b 为全局变量  a为局部变量
+//        }
+//        fun1();
+//        alert(b);
+//        alert(typeof (a));
+//
+//
+//        setTimeout('window.close()',3000);
+//        setInterval(function () {
+//            alert(666);
+//        },2000);
+//        setInterval(alert(666),2000); //只执行一次 同setTimeout
+
+//        alert('abcde'.substring(3)) //参数均为位置
+//alert('abcde'.slice(1,-1));//参数均为位置
+//alert('abcde'.substr(-2,2));//第二个参数是 个数
+//       alert( Object.prototype.toString.call(null)); //比 typeof 更准确
+
+//----------------------------------------------
+//var myObject = {
+//    foo: "bar",
+//    func: function() {
+//        var self = this;
+//        console.log("outer func:  this.foo = " + this.foo);
+//        console.log("outer func:  self.foo = " + self.foo);
+////        (function() {
+////            console.log("inner func:  this.foo = " + this.foo); //注意函数有自己的作用域 这时候 this 已经变了
+////            console.log("inner func:  self.foo = " + self.foo);
+////        }());
+//
+//        //第二种写法
+//        (function(test) {
+//            console.log("inner func:  this.foo = " + test.foo);  //'bar'
+//            console.log("inner func:  self.foo = " + self.foo);
+//        }(self));
+//    }
+//};
+//myObject.func();
+
+//----------------------------------------------------------
+//(function() {
+//    console.log(1);
+//    setTimeout(function(){console.log(2)}, 1000);
+//    setTimeout(function(){console.log(3)}, 0);
+//    console.log(4);
+//})();
+//输出 1 4 3 2
+
+////变量污染
+//        for(var i=0;i<5;i++)
+//        {
+//            setTimeout(function () {
+//                console.log(i)
+//            },1000)
+//        }
+//
+//for(var i=0;i<5;i++)
+//{
+//    //通过函数传值，防止变量污染
+//    (function (num) {
+//        setTimeout(function () {
+//            console.log(num)
+//        },1000)
+//    })(i)
+//}
+//----------------------------------------------------------
+//NaN 是 Not a Number 的缩写，JavaScript 的一种特殊数值，其类型是 Number，可以通过 isNaN(param) 来判断一个值是否是 NaN
+//console.log(isNaN(NaN)); //true
+//console.log(isNaN(23)); //false
+//console.log(isNaN('ds')); //true
+//console.log(NaN === NaN); //false   // == === 恒返回false
+//console.log(NaN === undefined); //false
+//console.log(undefined === undefined); //true
+//console.log(typeof NaN); //number
+
+//----------------------------------------------------------
+//console.log(0.1 + 0.2)
+//console.log((0.555).toPrecision(2)); //指数
+//console.log((0.555).toFixed(2));
+//console.log(Math.round(0.555*100)/100); //四舍五入取整
+//console.log(Math.floor(0.555*100)/100);//向下取整
+//console.log(Math.ceil(0.555*100)/100);//向上取整
+//console.log(parseFloat('0.39'))
+//console.log(parseInt(25.01)===25)  //判断是否是整数
+//alert(Number("3.1415926").toFixed(2))
+
+//----------------------------------------------------------
+//function sum() {
+//    var fir = arguments[0];
+//    if(arguments.length === 2) {
+//        return arguments[0] + arguments[1]
+//    } else {
+//        return function(sec) {
+//            return fir + sec;
+//        }
+//    }
+//
+//}
+//console.log(sum(2)(3)) ;
+
+//----------------------------------------------------------
+//var arr1 = "john".split('');
+//var arr2 = arr1.reverse();// reverse 改变原来数组，不创建新的数组
+//var arr3 = "jones".split('');
+//arr2.push(arr3);
+////console.log(arr1);
+////console.log(arr2);
+//console.log("array 1: length=" + arr1.length + " last=" + arr1.slice(-1));
+//console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
+
+//----------------------------------------------------------
+//console.log(1 +  "2" + "2");// 122
+//console.log(1 +  +"2" + "2");// 3+ '2'=32
+//console.log(1 +  -"1" + "2");//02
+//console.log(+"1" +  "1" + "2");//112
+//console.log( "A" - "B" + "2");//NaN2
+//console.log( "A" - "B" + 2);//NaN
+
+//----------------------------------------------------------
+////&& 返回最后一个元素，遇到false 直接返回该元素
+//console.log(1 && 0 && 1);  //0
+//console.log(1 && 2 && 3);  //3
+//console.log(0 || 1 || 1);  //1
+//console.log(0 || 2 || 1);  //2
+////&& 优先级别高
+//console.log(1 || 0 && 1);  //1
+//console.log(0 || 2 && 3);  //3
+//----------------------------------------------------------
+//console.log(false==false);
+//console.log(0==false);
+//console.log(NaN==false); //NaN 和任何值 == ==== 都是false
+//console.log(null==false);//false
+//
+//console.log(null==0);//false  null 做==比较时 不做类型转化 所以返回false
+//console.log(null>=0);//false  关系运算（> < ）时做 数字转换 null=0 所以 返回true
+//----------------------------------------------------------
+//var a={},
+//    b={key:'b'},
+//    c={key:'c'};
+//
+//a[b]=123;
+//a[c]=456;
+//
+//console.log(a)  //{[object Object]: 456}
+//console.log(a[b])//等价于 a[[object Object]]
+
+//----------------------------------------------------------
+//    var person={
+//    sname:'a miao',
+//    getname:function () {
+//        return this.sname;
+//    }
+//}
+//console.log(person.getname())
+//var gfun=person.getname; //等价于 在全局环境下 定义了 gfun 函数
+//console.log(gfun()) //undefined
+//console.log(gfun.call(person))
+//console.log(gfun.apply(person))
+//----------------------------------------------------------
+//        var y=1
+//        x=y=typeof x;
+//        console.log(x) //undefined
+//----------------------------------------------------------
+
+// var arr=[1,3,5,7]
+//console.log(Math.max.apply(null,arr)); //没有要应用的对象 所以 第一个参数为null
+//console.log(Math.min.call(null,1,3,5,7));
+
+//----------------------------------------------------------
+
+//        var a=10;
+//        function aaa() {
+//            alert(a);
+//        }
+//        function bbb() {
+//            var a=20;
+//            aaa();
+//            (function () {
+//                alert(a); //从里往外找
+//                alert(this.a); //this 表示全局
+//            })()
+//        }
+//        bbb();
+//----------------------------------------------------------
+//        var a=1
+//        function test() {
+//            alert(a)
+//            var a=6;
+//            alert(a)
+//        }
+//        //以上代码等价于下面
+//function test1() {
+//    var a
+//    alert(a)
+//    a=6;
+//    alert(a)
+//}
+//        test();
+
+//----------------------------------------------------------
+////作用域
+//var a=6
+// function fn(a) {
+//     alert(a);//当参数跟局部变量重名时，优先级是等同的
+//     var a=20;
+//     alert(a);
+// }
+// fn(a);
+
+//var a = 5;
+//var b = a;
+//b +=3;//这属于操作，不是赋值 所以 a、b 还是相同指向
+////b=6 ;//赋值操作 ，b指向变了
+//alert(a);//5
+
+//        var c=[1,2,3]
+//        function ddd(d) {
+////            d.push(4);//d指向c 然后进行对象操作
+//            d=4; //d指向4 与a无关了
+//        }
+//        ddd(c);
+//        alert(c);
+
+//console.log('abc'.split('').join(','))
+//console.log(parseInt((2/3)*10)/10)
+console.log(Number(3).toFixed(2))
+    </script>
+</head>
+<body>
+
+</body>
+</html>
